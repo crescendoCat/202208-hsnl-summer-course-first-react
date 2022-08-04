@@ -1,10 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from "react";
 
 function ListItem(props) {
+  const [edit, setEdit] = useState(props.edit);
+  useEffect(() => {
+    setEdit(props.edit);
+  }, [props.edit])
+
+  const [value, setValue] = useState(props.value);
+
+  useEffect(() => {
+    setValue(props.value)
+  }, [props.value])
+
+  const handleChange = (event) => {
+    setValue(event.target.value)
+  }
 
   return (
-    <li>{props.value}</li>
+    <li onClick={() => setEdit(true)}>
+      {
+        edit
+        ? <input 
+            autoFocus
+            name="list-input" 
+            type="text" 
+            value={value}
+            onChange={handleChange}
+            onBlur={() => setEdit(false)}
+            />
+        : value
+      }
+    </li>
   )
 }
 
