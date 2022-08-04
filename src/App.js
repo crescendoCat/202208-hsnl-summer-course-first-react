@@ -1,25 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from "react";
+
+function ListItem(props) {
+
+  return (
+    <li>{props.value}</li>
+  )
+}
+
 
 function App() {
+  const listItems = ["item1", "item2", "item3"]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id="title">Todo List</div>
+      <div className="App">
+        <ul>
+          {
+            listItems.map((item, idx) => 
+              <ListItem value={item} key={`list-item-${idx}`}/>
+            )
+          }
+        </ul>
+        <li>
+        </li>
+      </div>
+    </>
   );
 }
+
 
 export default App;
