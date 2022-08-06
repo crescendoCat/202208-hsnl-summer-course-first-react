@@ -46,8 +46,6 @@ export default function TodoList(props) {
     setList(newList)
   }
 
-  console.log(list)
-
   return(
     <>
       <h1 id="title">{props.title}</h1>
