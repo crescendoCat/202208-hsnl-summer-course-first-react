@@ -15,7 +15,7 @@ function TodoList(props) {
       <div>
         <ul>
           {
-            props.listItems.map((item, idx) => 
+            props.list.map((item, idx) => 
               <ListItem value={item} key={`list-item-${idx}`}/>
             )
           }
