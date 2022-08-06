@@ -46,6 +46,12 @@ export default function TodoList(props) {
     setList(newList)
   }
 
+  const createNewItem = () => {
+    let newList = [...list];
+    newList.push("New Item: Click to Edit");
+    setList(newList)
+  }
+
   return(
     <>
       <h1 id="title">{props.title}</h1>
@@ -58,6 +64,9 @@ export default function TodoList(props) {
                 onChange={v => handleChange(idx, v)}/>
             )
           }
+          <li>
+            <button onClick={createNewItem}>create</button>
+          </li>
         </ul>
       </div>
     </>
