@@ -8,21 +8,29 @@ function ListItem(props) {
   )
 }
 
-
-function App() {
-  const listItems = ["item1", "item2", "item3"]
-  return (
-    <div className="App">
-      <h1 id="title">Todo List</h1>
+function TodoList(props) {
+  return(
+    <>
+      <h1 id="title">{props.title}</h1>
       <div>
         <ul>
           {
-            listItems.map((item, idx) => 
+            props.listItems.map((item, idx) => 
               <ListItem value={item} key={`list-item-${idx}`}/>
             )
           }
         </ul>
       </div>
+    </>
+  )
+}
+
+function App() {
+  const listItems = ["item1", "item2", "item3"]
+  return (
+    <div className="App">
+      
+      <TodoList title="Todo List" list={listItems}/>
     </div>
   );
 }
