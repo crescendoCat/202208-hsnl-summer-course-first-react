@@ -14,6 +14,9 @@ function ListItem(props) {
 
   const handleChange = (event) => {
     setValue(event.target.value)
+    if(props.onChange && typeof props.onChange === "function") {
+      props.onChange(event.target.value)
+    }
   }
 
   return (
@@ -35,14 +38,26 @@ function ListItem(props) {
 }
 
 export default function TodoList(props) {
+  const [list, setList] = useState(props.list);
+
+  const handleChange = (idx, v) => {
+    let newList = [...list];
+    newList[idx] = v
+    setList(newList)
+  }
+
+  console.log(list)
+
   return(
     <>
       <h1 id="title">{props.title}</h1>
       <div>
         <ul>
           {
-            props.list.map((item, idx) => 
-              <ListItem value={item} key={`list-item-${idx}`}/>
+            list.map((item, idx) => 
+              <ListItem 
+                value={item} key={`list-item-${idx}`}
+                onChange={v => handleChange(idx, v)}/>
             )
           }
         </ul>
