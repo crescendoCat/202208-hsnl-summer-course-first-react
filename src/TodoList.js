@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { fetchTodoList } from "./api";
 
 function ListItem(props) {
   const [edit, setEdit] = useState(props.edit);
@@ -39,6 +40,10 @@ function ListItem(props) {
 
 export default function TodoList(props) {
   const [list, setList] = useState(props.list);
+
+  useEffect(() => {
+    fetchTodoList().then(data => setList(data.listItems))
+  }, [])
 
   const handleChange = (idx, v) => {
     let newList = [...list];
