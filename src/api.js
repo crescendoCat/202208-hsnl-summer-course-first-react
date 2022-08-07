@@ -20,5 +20,5 @@ export async function updateTodoList(list) {
   if(response.ok) {
     return response.json()
   }
-  else throw "Failed to get list items"
+  else throw "Failed to update list items"
 }
