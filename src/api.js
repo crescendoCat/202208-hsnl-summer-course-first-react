@@ -8,3 +8,17 @@ export async function fetchTodoList() {
   }
   else throw "Failed to get list items"
 }
+
+export async function updateTodoList(list) {
+  let response = await fetch(API_ENDPOINT + "/list", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({listItems: list})
+  });
+  if(response.ok) {
+    return response.json()
+  }
+  else throw "Failed to get list items"
+}
