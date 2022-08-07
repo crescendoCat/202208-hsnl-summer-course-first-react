@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.App .loading-board {
+  width:  100vw;
+  height: 100vh;
+  background-color: #0005;
+  position: fixed;
+  left:   0;
+  top:    0;
+  visibility:  hidden;
+  opacity: 0;
+  transition-property: visibility, opacity;
+  transition-duration: .0s, .5s;
+  transition-timing-function: ease-in;
+  color:  white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.App .loading-board.active {
+  visibility: visible;
+  opacity: 1;
+  transition-property: visibility, opacity;
+  transition-delay: 0s, .5s;
+  transition-duration: 0s, .5s;
+  transition-timing-function: ease-in;
+}

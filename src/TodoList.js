@@ -40,9 +40,13 @@ function ListItem(props) {
 
 export default function TodoList(props) {
   const [list, setList] = useState(props.list);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetchTodoList().then(data => setList(data.listItems))
+    setLoading(true);
+    fetchTodoList().then(data => {
+      setList(data.listItems)
+      setLoading(false)
+    })
   }, [])
 
   const handleChange = (idx, v) => {
@@ -64,6 +68,9 @@ export default function TodoList(props) {
             )
           }
         </ul>
+      </div>
+      <div className={`loading-board ${loading ? "active" : ""}`}>
+        Loading
       </div>
     </>
   )
